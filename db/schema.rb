@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 2019_02_07_214632) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.float "price"
     t.integer "quantity"
     t.string "description"
     t.datetime "created_at", null: false
@@ -31,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_02_07_214632) do
   create_table "store_items", force: :cascade do |t|
     t.integer "store_id"
     t.integer "item_id"
+    t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_store_items_on_item_id"
