@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :store_items
+  resources :stores
+  resources :lists
+  resources :items
   resources :users
   root 'application#hello'
   get '/login' => 'sessions#new'
