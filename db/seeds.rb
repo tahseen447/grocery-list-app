@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Store.create(:name=> "Costco", :description=>"Skypark")
+Store.create(:name=>"Sprouts", :description =>"Anza")
+Store.create(:name=>"Ralphs", :description=>"Rolling Hills")
+Store.create(:name=>"Trader Joes", :description=>"Rolling Hills Plaza")
+
+Item.create(:name=>"Milk", :description=>"Organic Whole Milk", :price => 7.49)
+Item.create(:name=>"Oranges", :description=>"Halos", :price => 4.49)
+Item.create(:name=>"Apples", :description=>"Organic Fuji Apples", :price => 3.99)
+Item.create(:name=>"Pears", :description=>"Organic Bartlett Pears", :price => 3.99)
+Item.create(:name=>"Oranges", :description=>"Halos", :price => 4.49)
+Item.create(:name=>"Eggs", :description=>"Organic Range Free", :price => 7.49)
+Item.create(:name=>"Bananas", :description=>"Dole", :price => 0.29)
+Item.create(:name=>"Strawberries", :description=>"Organic", :price => 2.49)
