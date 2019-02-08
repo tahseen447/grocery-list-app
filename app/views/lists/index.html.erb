@@ -1,0 +1,4 @@
+<h1> Here's all your lists so far </h1>
+<% @lists.each do |list| %>
+<li><%= link_to list.name, list_path(list) %> - <%= link_to 'Delete this List', list_path(list), :method => "delete" %> </li>
+<% end %>

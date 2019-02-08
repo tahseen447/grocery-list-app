@@ -1,6 +1,8 @@
 <%= @list.name %>
 <%= @list.description %>
-<% binding.pry %>
 <% @list.items.each do |item| %>
-<li><%= item.name %> - <%= item.description %> <%= link_to item.name, item_path %></li>
+<li><%= link_to item.name, item_path %> - <%= item.description %> </li>
 <% end %>
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>
