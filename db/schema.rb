@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_02_08_003516) do
   create_table "list_items", force: :cascade do |t|
     t.integer "list_id"
     t.integer "item_id"
-    t.integer "quantity"
+    t.integer "quantity", default: 1
   end
 
   create_table "lists", force: :cascade do |t|
@@ -35,11 +35,9 @@ ActiveRecord::Schema.define(version: 2019_02_08_003516) do
   create_table "store_items", force: :cascade do |t|
     t.integer "store_id"
     t.integer "item_id"
-    t.float "price"
+    t.float "price", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_store_items_on_item_id"
-    t.index ["store_id"], name: "index_store_items_on_store_id"
   end
 
   create_table "stores", force: :cascade do |t|
