@@ -1,0 +1,14 @@
+<%= form_for(@list) do |f|%>
+<div><%= f.label :name %><br>
+<%= f.text_field :name %></div>
+
+<div><%= f.label :description %><br>
+<%= f.text_area :description %></div>
+
+<div>
+  <label>Items</label><br>
+  <%= f.collection_check_boxes :item_ids, Item.all, :id, :name %>
+  <label> Item Price </label><br>
+</div>
+<div> <%= f.submit %> </div>
+<% end %>

@@ -1,0 +1,6 @@
+<%= @list.name %>
+<%= @list.description %>
+<% binding.pry %>
+<% @list.items.each do |item| %>
+<li><%= item.name %> - <%= item.description %> <%= link_to item.name, item_path %></li>
+<% end %>

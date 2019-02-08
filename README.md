@@ -21,4 +21,7 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* <% f.fields_for :list_items, @list.list_items.build do |list_item_fields| %>
+    <%
+    <div><%= f.label :quantity %><br>
+    <%= f.text_field :quantity %></div>
