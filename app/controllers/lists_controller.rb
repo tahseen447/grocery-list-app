@@ -1,16 +1,27 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show]
+  before_action :set_list, only: [:show, :edit, :update]
+
   def new
     @list = List.new
   end
 
   def create
     @list = List.create(list_params)
-    binding.pry
     redirect_to list_path(@list)
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @list.update
+      redirect_to list_path(@list)
+    else
+      redirect_to edit_list_path(@list)
+    end
   end
 
   private
