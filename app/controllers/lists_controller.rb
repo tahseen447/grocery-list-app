@@ -1,8 +1,9 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :require_logged_in
 
   def index
-    @lists = List.all
+    @lists = @user.lists
   end
 
   def new
@@ -10,8 +11,13 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.create(list_params)
-    redirect_to list_path(@list)
+    binding.pry
+    @list = @user.lists.build(list_params)
+    if @list.save
+      redirect_to list_path(@list)
+    else
+      redirect_to new_list_path
+    end
   end
 
   def show
@@ -41,5 +47,13 @@ class ListsController < ApplicationController
 
   def set_list
     @list = List.find(params[:id])
+  end
+
+  def require_logged_in
+    if logged_in?
+      @user = current_user
+    else
+      return head(:forbidden)
+    end
   end
 end
