@@ -8,7 +8,6 @@
 <div>
   <label>Items</label><br>
   <%= f.collection_check_boxes :item_ids, Item.all, :id, :name %>
-  <label> Item Price </label><br>
 </div>
 
 <div> <%= f.submit %> </div>

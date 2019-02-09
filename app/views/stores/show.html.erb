@@ -5,7 +5,7 @@
 <div>
   <h3>Filter Items:</h3>
   <%= form_tag(store_path, method: "get") do %>
-    <%= select_tag "sort_order", options_for_select(["High to Low", "Low to High", "Top Rated"]), include_blank: true %>
+    <%= select_tag "sort_order", options_for_select(["High to Low", "Low to High", "Top Rated"]), include_blank: false %>
     <%= submit_tag "Filter" %>
   <% end %>
 </div>

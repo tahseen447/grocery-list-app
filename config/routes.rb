@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     resource :items, only: [:show, :index]
   end
 
-  resources :lists
+  resources :lists do
+    resource :stores, only: [:show, :index]
+  end
   resources :items
   resources :users
 
