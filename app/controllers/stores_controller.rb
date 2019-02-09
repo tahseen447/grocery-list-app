@@ -12,9 +12,14 @@ class StoresController < ApplicationController
       elsif params[:sort_order] == "Low to High"
         @store_items = Store.items_low_to_high
       end
-    elsif !params[:store][:id].blank?
+    elsif !params[:list_id].blank?
       @store = Store.find(params[:store][:id])
-    #  @store_items = Store.store_items
+      list = List.find(params[:list_id])
+      list_items = list.items.all.map {|item| item.name}
+      store_items = @store.store_items.all
+      @store_items =store_items.map {|items| items if list_items.include?(items.item.name)}.compact
+      else
+        @store_items = @store.store_items
     end
   end
 

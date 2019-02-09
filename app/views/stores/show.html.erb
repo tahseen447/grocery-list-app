@@ -9,7 +9,7 @@
     <%= submit_tag "Filter" %>
   <% end %>
 </div>
-<% @store.store_items.each do |items| %>
+<% @store_items.each do |items| %>
 <li>
   <%= link_to items.item.name, item_path(items.item) %> - <label>Price:</label><%=items.price %>
 </li>

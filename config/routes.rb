@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  resources :store_items
+#  resources :store_items
 
   resources :stores do
-    resource :items, only: [:show, :index]
+    resources :items, only: [:show, :index]
   end
 
   resources :lists do
-    resource :stores, only: [:show, :index]
+    resources :stores, only: [:index, :show ]
   end
   resources :items
   resources :users

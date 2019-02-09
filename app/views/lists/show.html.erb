@@ -5,7 +5,7 @@
 <% end %>
 
 <label> Check out Prices at these stores:</label>
-<%= form_tag(store_path, method: "get") do %>
+<%= form_tag(list_store_path(@list), method: "get") do %>
 <%= collection_select :store, :id, Store.all, :id, :name %>
 <%= submit_tag "Filter" %>
 <% end %>

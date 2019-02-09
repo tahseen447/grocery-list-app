@@ -40,6 +40,7 @@ StoreItem.create(:store_id=>3, :item_id=>4, :price=>3.99)
 StoreItem.create(:store_id=>3, :item_id=>18, :price=>7.99)
 StoreItem.create(:store_id=>3, :item_id=>19, :price=>1.99)
 StoreItem.create(:store_id=>3, :item_id=>20, :price=>2.49)
+StoreItem.create(:store_id=>3, :item_id=>1, :price=>3.99)
 
 
 StoreItem.create(:store_id=>2, :item_id=>22, :price=>9.99)
@@ -47,13 +48,16 @@ StoreItem.create(:store_id=>2, :item_id=>21, :price=>2.49)
 StoreItem.create(:store_id=>2, :item_id=>23, :price=>6.49)
 StoreItem.create(:store_id=>2, :item_id=>16, :price=>7.99)
 StoreItem.create(:store_id=>2, :item_id=>15, :price=>3.49)
+StoreItem.create(:store_id=>2, :item_id=>1, :price=>2.99)
+StoreItem.create(:store_id=>2, :item_id=>2, :price=>7.49)
 
 StoreItem.create(:store_id=>1, :item_id=>10, :price=>14.99)
 StoreItem.create(:store_id=>1, :item_id=>11, :price=>12.99)
 StoreItem.create(:store_id=>1, :item_id=>12, :price=>3.99)
 StoreItem.create(:store_id=>1, :item_id=>13, :price=>7.49)
 StoreItem.create(:store_id=>1, :item_id=>6, :price=>6.49)
-StoreItem.create(:store_id=>1, :item_id=>1, :price=>2.99)
+StoreItem.create(:store_id=>1, :item_id=>1, :price=>1.99)
+StoreItem.create(:store_id=>2, :item_id=>2, :price=>8.49)
 
 
 StoreItem.create(:store_id=>4, :item_id=>3, :price=>1.99)
@@ -62,5 +66,7 @@ StoreItem.create(:store_id=>4, :item_id=>8, :price=>3.99)
 StoreItem.create(:store_id=>4, :item_id=>16, :price=>5.99)
 StoreItem.create(:store_id=>4, :item_id=>15, :price=>6.49)
 StoreItem.create(:store_id=>4, :item_id=>14, :price=>3.49)
+StoreItem.create(:store_id=>4, :item_id=>1, :price=>4.99)
+StoreItem.create(:store_id=>4, :item_id=>2, :price=>4.49)
 
 #User.create(:name=> "Tahseen Siddiqui", :email=>"tahseenfatima1986@gmail.com")
