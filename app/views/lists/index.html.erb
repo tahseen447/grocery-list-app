@@ -2,3 +2,11 @@
 <% @lists.each do |list| %>
 <li><%= link_to list.name, list_path(list) %> - <%= link_to 'Delete this List', list_path(list), :method => "delete" %> </li>
 <% end %>
+
+<% if current_user %>
+  <p>
+    <%= link_to "Back to profile", root_path %>
+  </p>
+<% else %>
+  <p><%= link_to "Make a new list", new_list_path %></p>
+<% end %>

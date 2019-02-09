@@ -10,14 +10,6 @@ Store.create(:name=>"Sprouts", :description =>"Anza")
 Store.create(:name=>"Ralphs", :description=>"Rolling Hills")
 Store.create(:name=>"Trader Joes", :description=>"Rolling Hills Plaza")
 
-
-
-
-
-
-
-
-
 Item.create(:name=>"Milk", :description=>"Organic Whole Milk")
 Item.create(:name=>"Oranges", :description=>"Halos")
 Item.create(:name=>"Apples", :description=>"Organic Fuji Apples")
