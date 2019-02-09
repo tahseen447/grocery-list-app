@@ -17,23 +17,34 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    if !params[:store_id].blank?
+      @store = Store.find(params[:store_id])
+      @item = Item.new
+      @store_item = @item.store_items.build
+      @store_item.store = @store
+    else
+      @item = Item.new
+    end
   end
 
   def create
+    if !params[:store_id].blank?
+      @store = Store.find(params[:store_id])
+      @item = @store.store_items.build(item_params)
+    else
     @item = Item.new(item_params)
-      binding.pry
     if @item.save
       redirect_to item_path(@item)
     else
       redirect_to new_item_path
     end
   end
+  end
 
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :department)
+    params.require(:item).permit(:name, :description, :department, :store_id)
   end
 
   def set_item

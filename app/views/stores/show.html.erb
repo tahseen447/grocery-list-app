@@ -15,7 +15,9 @@
 </li>
 <% end %>
 </div>
-<div><label>Add a new Item </label></div>
+<div><%= link_to 'Add New Item', new_store_item_path(@store)%>
+</div>
+
 
 <div><%= link_to 'Back to Store List', stores_path %>
 </div>
