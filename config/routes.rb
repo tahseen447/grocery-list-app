@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   resources :store_items
-  resources :stores
+
+  resources :stores do
+    resource :items, only: [:show, :index]
+  end
+
   resources :lists
   resources :items
   resources :users
+
+
   root 'application#hello'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
