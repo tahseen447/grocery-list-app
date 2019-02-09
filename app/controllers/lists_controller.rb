@@ -3,7 +3,7 @@ class ListsController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @lists = @user.lists
+    @lists = current_user.lists
   end
 
   def new
@@ -12,7 +12,7 @@ class ListsController < ApplicationController
 
   def create
     binding.pry
-    @list = @user.lists.build(list_params)
+    @list = current_user.lists.build(list_params)
     if @list.save
       redirect_to list_path(@list)
     else
@@ -50,10 +50,6 @@ class ListsController < ApplicationController
   end
 
   def require_logged_in
-    if logged_in?
-      @user = current_user
-    else
-      return head(:forbidden)
-    end
+     return head(:forbidden) unless logged_in?
   end
 end
