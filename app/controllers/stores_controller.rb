@@ -12,8 +12,8 @@ class StoresController < ApplicationController
       elsif params[:sort_order] == "Low to High"
         @store_items = Store.items_low_to_high
       end
-    else
-      @store_items = Store.store_items
+    #else
+    #  @store_items = Store.store_items
     end
   end
 

@@ -4,12 +4,12 @@
 <h3>Here are the items sold at this store </h3>
 <div>
   <h3>Filter Items:</h3>
-  <%= form_tag("/stores", method: "get") do %>
+  <%= form_tag(store_path, method: "get") do %>
     <%= select_tag "sort_order", options_for_select(["High to Low", "Low to High", "Top Rated"]), include_blank: true %>
     <%= submit_tag "Filter" %>
   <% end %>
 </div>
-<% @store_items.each do |items| %>
+<% @store.store_items.each do |items| %>
 <li>
   <%= link_to items.item.name, item_path(items.item) %> - <label>Price:</label><%=items.price %>
 </li>
