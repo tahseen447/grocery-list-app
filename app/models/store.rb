@@ -3,16 +3,16 @@ class Store < ApplicationRecord
   has_many :items, through: :store_items
 
 
-  def self.items_high_to_low
-  #  StoreItems.all.order(price: :desc).where(store_id: '#{self.id}')
+  def items_high_to_low
+    self.store_items.order(price: :desc)
   end
 
-  def self.items_low_to_high
-    #store_items.order(price: :asc)
+  def items_low_to_high
+    self.store_items.order(price: :asc)
   end
 
-  #def self.store_items
-  #  binding.pry
-  #  store_items
-  #end
+  def self.store_items
+    binding.pry
+
+  end
 end
