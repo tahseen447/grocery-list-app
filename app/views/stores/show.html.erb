@@ -9,9 +9,13 @@
     <%= submit_tag "Filter" %>
   <% end %>
 </div>
-<% @store_items.each do |items| %>
+<div><% @store_items.each do |items| %>
 <li>
   <%= link_to items.item.name, item_path(items.item) %> - <label>Price:</label><%=items.price %>
 </li>
 <% end %>
-<%= link_to 'Back to Store List', stores_path %>
+</div>
+<div><label>Add a new Item </label></div>
+
+<div><%= link_to 'Back to Store List', stores_path %>
+</div>

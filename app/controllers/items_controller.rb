@@ -16,8 +16,26 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def new
+    @item = Item.new
+  end
+
+  def create
+    @item = Item.new(item_params)
+      binding.pry
+    if @item.save
+      redirect_to item_path(@item)
+    else
+      redirect_to new_item_path
+    end
+  end
 
   private
+
+  def item_params
+    params.require(:item).permit(:name, :description, :department)
+  end
+
   def set_item
     @item = Item.find(params[:id])
   end

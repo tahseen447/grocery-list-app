@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 #  resources :store_items
 
   resources :stores do
-    resources :items, only: [:show, :index]
+    resources :items, only: [:show, :index, :new]
   end
 
   resources :lists do

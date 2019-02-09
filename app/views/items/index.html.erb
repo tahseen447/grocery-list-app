@@ -1,5 +1,5 @@
 <%= form_tag(items_path, method: "get") do %>
-  <%= select_tag "sort_by_department", options_for_select(Item.departments, @department)%>
+  <%= select_tag "sort_by_department", options_for_select(Item.departments_by_name, @department)%>
   <%= submit_tag "Filter" %>
 <% end %>
 
@@ -8,3 +8,5 @@
   <%= link_to item.name, item_path(item) %>
 </li>
 <% end %>
+
+<div><%= link_to 'Add a New Item', new_item_path %></div>

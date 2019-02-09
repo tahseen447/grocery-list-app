@@ -1,0 +1,17 @@
+<h1> Creating a New Item </h1>
+<%= form_for(@item) do |f| %>
+<div><%= f.label :name %><br>
+<%= f.text_field :name %></div>
+
+<div><%= f.label :description %><br>
+<%= f.text_area :description %></div>
+
+<div><%= f.label :department %><br>
+<%= f.text_field :department, list: 'department' %>
+  <datalist id="department">
+      <% Item.departments.each do |item| %>
+        <option value="<%= item.department %>"></option>
+      <% end %>
+    </datalist>
+<div> <%= f.submit %> </div>
+<% end %>

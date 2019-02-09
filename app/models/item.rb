@@ -17,7 +17,11 @@ class Item < ApplicationRecord
 
 
  def self.departments
-   select(:department).distinct.map{|item| item.department}
+   select(:department).distinct
+ end
+
+ def self.departments_by_name
+   departments.map {|item| item.department}
  end
 
  def self.sort_by_department(department)
