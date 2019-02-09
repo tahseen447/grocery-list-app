@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
   before_action :require_logged_in
+  before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
     @lists = current_user.lists
@@ -47,6 +47,7 @@ class ListsController < ApplicationController
 
   def set_list
     @list = List.find(params[:id])
+    @list.user_id === current_user.id
   end
 
   def require_logged_in

@@ -1,5 +1,5 @@
-<%= @list.name %>
-<%= @list.description %>
+<h1><%= @list.name %></h1>
+<h2><%= @list.description %> </h2>
 <% @list.items.each do |item| %>
 <li><%= link_to item.name, item_path %></li>
 <% end %>
