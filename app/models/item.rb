@@ -18,7 +18,16 @@ def self.departments
 end
 
 def sort_by_department(department)
-
-
+  case department
+  when "Produce"
+    self.produce_department
+  when "Deli"
+    self.deli_department
+  when "Frozen"
+    self.frozen_department
+  when "Dairy"
+    self.dairy_department
+  end
 end
+
 end
