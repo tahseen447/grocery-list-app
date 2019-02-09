@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
       @items = store_items.map {|item| item.item}
     elsif !params[:sort_by_department].blank?
       @items = Item.sort_by_department(params[:sort_by_department])
+      @department = params[:sort_by_department]
     else
       @items = Item.all
     end

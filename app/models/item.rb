@@ -8,26 +8,35 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: true
 
- scope :produce_department, -> { where (department: 'Produce') }
- scope :deli_department, -> { where (department: 'Deli') }
- scope :frozen_department, -> { where (department: 'Frozen') }
- scope :dairy_department, -> { where (department: 'Dairy') }
+ scope :produce_department, -> { where(department: 'Produce') }
+ scope :deli_department, -> { where(department: 'Deli') }
+ scope :frozen_department, -> { where(department: 'Frozen') }
+ scope :dairy_department, -> { where(department: 'Dairy') }
+ scope :baby_department, -> { where(department: 'Baby') }
+ scope :misc_department, -> { where(department: 'Miscellaneous') }
 
-def self.departments
-  pluck(:department).distinct
-end
 
-def sort_by_department(department)
+ def self.departments
+   select(:department).distinct.map{|item| item.department}
+ end
+
+ def self.sort_by_department(department)
   case department
-  when "Produce"
-    self.produce_department
-  when "Deli"
-    self.deli_department
-  when "Frozen"
-    self.frozen_department
-  when "Dairy"
-    self.dairy_department
-  end
-end
+   when "Produce"
+     produce_department
+   when "Deli"
+     deli_department
+   when "Frozen"
+     frozen_department
+   when "Dairy"
+     dairy_department
+   when "Baby"
+     baby_department
+   when "Miscellaneous"
+     misc_department
+   else
+     all
+   end
+ end
 
 end
