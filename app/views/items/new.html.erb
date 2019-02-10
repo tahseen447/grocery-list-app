@@ -1,4 +1,4 @@
-<h1> Creating a New Item </h1>
+<h1> Creating a New Item <%= link_to @store.name, store_path(@store) if @store %></h1>
 <%= form_for(@item) do |f| %>
 <div><%= f.label :name %><br>
 <%= f.text_field :name %></div>
@@ -7,16 +7,21 @@
 <%= f.text_area :description %></div>
 
 <div><%= f.label :department %><br>
-<%= f.text_field :department, list: 'department' %>
+<%= f.text_field :department, list: 'department' %><br>
   <datalist id="department">
       <% Item.departments.each do |item| %>
         <option value="<%= item.department %>"></option>
       <% end %>
     </datalist>
-  <!--<#% if @store_item %> -->
-  <!--  <#% f.label :price  %>-->
-  <!--  <#% f.text_field :price %>-->
-  <!--  <#% end %>-->
-<div> <%= f.submit %> </div>
-
+</div>
+<div>
+  <% if @store %>
+  <%= form_for @item.store_items.build do |f|%>
+  <%= f.label :price  %><br>
+  <%= f.hidden_field :store_id, :value=>@store.id %>
+  <%= f.text_field :price %>
+  <%= f.submit %>
+  <% end %>
+  <%end%>
+</div>
 <% end %>

@@ -19,18 +19,16 @@ class ItemsController < ApplicationController
   def new
     if !params[:store_id].blank?
       @store = Store.find(params[:store_id])
-      @item = Item.new
-      @store_item = @item.store_items.build
-      @store_item.store = @store
-    else
-      @item = Item.new
     end
+      @item = Item.new
   end
 
   def create
-    if !params[:store_id].blank?
-      @store = Store.find(params[:store_id])
-      @item = @store.store_items.build(item_params)
+    if !params[:store_item].blank?
+      @item = Item.new(item_params)
+      @item.save
+      store_item=@item.store_items.create(params[:store_item])
+          binding.pry
     else
     @item = Item.new(item_params)
     if @item.save
@@ -44,7 +42,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :department, :store_id)
+    params.require(:item).permit(:name, :description, :department, store_item: [])
   end
 
   def set_item
