@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   def index
     if !params[:store_id].blank?
       store_items = Store.find(params[:store_id]).store_items
-      @items = store_items.map {|item| item.item}.uniq!
+      @items = store_items.map {|item| item.item}.uniq
     elsif !params[:sort_by_department].blank?
       @items = Item.sort_by_department(params[:sort_by_department])
       @department = params[:sort_by_department]
@@ -48,7 +48,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    binding.pry
     params.require(:item).permit(:name, :description, :department, store_items_attributes: [:store_id, :price])
   end
 
