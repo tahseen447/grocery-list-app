@@ -27,11 +27,14 @@ class ItemsController < ApplicationController
   end
 
   def create
-    if !params[:store_items].blank?
-      @item = Item.create(item_params)
-      @store = Store.find(params[:store_items][:store_id])
-      binding.pry
-      redirect_to store_item_path(@store, @item)
+    if !params[:item][:store_items_attributes].blank?
+      @item = Item.new(item_params)
+      @store = Store.find(params[:item][:store_items_attributes]["0"][:store_id])
+      if @item.save
+        redirect_to store_item_path(@store, @item)
+      else
+        redirect_to new_store_item_path(@store)
+      end
     else
     @item = Item.new(item_params)
     if @item.save

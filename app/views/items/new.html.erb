@@ -16,13 +16,12 @@
 </div>
 <div>
   <% if @store %>
-  <%= fields_for :store_items, @item.store_items.build do |store_item|%>
+  <%= f.fields_for :store_items, @item.store_items.build do |store_item|%>
   <%= f.label :price  %><br>
   <%= store_item.hidden_field :store_id, :value=>@store.id %>
   <%= store_item.text_field :price %>
   <% end %>
-
-    <%= f.submit %>
   <%end%>
 </div>
+    <%= f.submit %>
 <% end %>

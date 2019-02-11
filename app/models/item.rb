@@ -46,10 +46,8 @@ class Item < ApplicationRecord
  end
 
  def store_items_attributes=(store_item_attributes)
-   binding.pry
       store_item_attributes.values.each do |store_item_attribute|
-        store_item = StoreItem.find_or_create_by(store_item_attribute)
-        self.store_items.build(store_item: store_item)
+        self.store_items.build(store_item_attribute)
       end
     end
 
