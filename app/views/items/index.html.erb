@@ -1,5 +1,5 @@
 <%= form_tag(items_path, method: "get") do %>
-  <%= select_tag "sort_by_department", options_for_select(Item.departments_by_name, @department)%>
+  <%= select_tag "sort_by_department", options_for_select(Item.departments_by_name, @department), :prompt => "Please select"%>
   <%= submit_tag "Filter" %>
 <% end %>
 <% @items.each do |item| %>
@@ -8,4 +8,7 @@
 </li>
 <% end %>
 
-<div><%= link_to 'Add a New Item', new_item_path %></div> 
+<div>
+  <p>
+    <%= link_to 'Add a New Item', new_item_path %>
+  </p></div>
