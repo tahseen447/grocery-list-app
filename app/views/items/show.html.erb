@@ -1,6 +1,17 @@
 <h1><%= @item.name %></h1>
-<%= @item.description %>
+<div>
+<p><%= @item.description %> <br>
+</p>
+</div>
+
+<% if @store %>
+<p>
+<h3> Available @ <%= link_to @store.name, store_path(@store)%></h3>
+<h3> Here is a list of all available items @<%= link_to @store.name, store_items_path(@store) %>
+</p>
+<% end %>
 
 <div>
-<%= link_to "Back to Items", items_path %>
+
+<p> <%= link_to "Back to Items", items_path %> </p>
 </div>

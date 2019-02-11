@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   def index
     if !params[:store_id].blank?
       store_items = Store.find(params[:store_id]).store_items
-      @items = store_items.map {|item| item.item}
+      @items = store_items.map {|item| item.item}.uniq!
     elsif !params[:sort_by_department].blank?
       @items = Item.sort_by_department(params[:sort_by_department])
       @department = params[:sort_by_department]
@@ -14,6 +14,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    if !params[:store_id].blank?
+      @store = Store.find(params[:store_id])
+    end
   end
 
   def new
@@ -24,11 +27,11 @@ class ItemsController < ApplicationController
   end
 
   def create
-    if !params[:store_item].blank?
-      @item = Item.new(item_params)
-      @item.save
-      store_item=@item.store_items.create(params[:store_item])
-          binding.pry
+    if !params[:store_items].blank?
+      @item = Item.create(item_params)
+      @store = Store.find(params[:store_items][:store_id])
+      binding.pry
+      redirect_to store_item_path(@store, @item)
     else
     @item = Item.new(item_params)
     if @item.save
@@ -42,7 +45,8 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :department, store_item: [])
+    binding.pry
+    params.require(:item).permit(:name, :description, :department, store_items_attributes: [:store_id, :price])
   end
 
   def set_item

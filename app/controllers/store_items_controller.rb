@@ -7,6 +7,7 @@ class StoreItemsController < ApplicationController
 
 def private
   def store_item_params
+    binding.pry
     params.require(:store_item).permit(:store_id, :item_id, :price)
   end
 end
