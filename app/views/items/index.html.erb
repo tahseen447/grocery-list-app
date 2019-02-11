@@ -2,11 +2,10 @@
   <%= select_tag "sort_by_department", options_for_select(Item.departments_by_name, @department)%>
   <%= submit_tag "Filter" %>
 <% end %>
-<% binding.pry %>
 <% @items.each do |item| %>
 <li>
   <%= link_to item.name, item_path(item) %>
 </li>
 <% end %>
 
-<div><%= link_to 'Add a New Item', new_item_path %></div>
+<div><%= link_to 'Add a New Item', new_item_path %></div> 
