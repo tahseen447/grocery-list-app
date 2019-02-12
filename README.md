@@ -21,16 +21,4 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* <% f.fields_for :list_items, @list.list_items.build do |list_item_fields| %>
-    <%
-    <div><%= f.label :quantity %><br>
-    <%= f.text_field :quantity %></div>
-
-    <%= form_for @item.store_items.build do |f|%>
-    <%= f.label :price  %>
-    <%= f.hidden :store_id, :value=>@store.id %>
-    <%= f.fields_for :price,  @item.store_items.build do |item_field| %>
-    <%= item_field.text_field :price %>
-    <%= f.submit %>
-    <% end %>
-    <% end %>
+* 
