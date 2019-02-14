@@ -11,8 +11,4 @@ class Store < ApplicationRecord
     self.store_items.order(price: :asc)
   end
 
-  def self.store_items
-    binding.pry
-
-  end
 end
