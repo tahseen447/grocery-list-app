@@ -12,6 +12,7 @@ class StoresController < ApplicationController
       elsif params[:sort_order] == "Low to High"
         @store_items = @store.items_low_to_high
       end
+      @sort_order = params[:sort_order]
     elsif !params[:list_id].blank?
       @store = Store.find(params[:store][:id])
       @list = List.find(params[:list_id])
