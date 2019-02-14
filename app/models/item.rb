@@ -10,12 +10,12 @@ class Item < ApplicationRecord
 
   accepts_nested_attributes_for :store_items
 
- scope :produce_department, -> { where(department: 'Produce') }
- scope :deli_department, -> { where(department: 'Deli') }
- scope :frozen_department, -> { where(department: 'Frozen') }
- scope :dairy_department, -> { where(department: 'Dairy') }
- scope :baby_department, -> { where(department: 'Baby') }
- scope :misc_department, -> { where(department: 'Miscellaneous') }
+# scope :produce_department, -> { where(department: 'Produce') }
+# scope :deli_department, -> { where(department: 'Deli') }
+# scope :frozen_department, -> { where(department: 'Frozen') }
+# scope :dairy_department, -> { where(department: 'Dairy') }
+# scope :baby_department, -> { where(department: 'Baby') }
+# scope :misc_department, -> { where(department: 'Miscellaneous') }
 
 
  def self.departments
@@ -27,22 +27,7 @@ class Item < ApplicationRecord
  end
 
  def self.sort_by_department(department)
-  case department
-   when "Produce"
-     produce_department
-   when "Deli"
-     deli_department
-   when "Frozen"
-     frozen_department
-   when "Dairy"
-     dairy_department
-   when "Baby"
-     baby_department
-   when "Miscellaneous"
-     misc_department
-   else
-     all
-   end
+  where("department = ?", department)
  end
 
  def store_items_attributes=(store_item_attributes)

@@ -11,4 +11,5 @@ class Store < ApplicationRecord
     self.store_items.order(price: :asc)
   end
 
+
 end

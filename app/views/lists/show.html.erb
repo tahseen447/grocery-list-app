@@ -2,6 +2,12 @@
 <h2><%= @list.description %> </h2>
 <% @list.items.each do |item| %>
 <li><%= link_to item.name, item_path %></li>
+<label>Quantity: </label>
+<%= f.form_for @list_item %>
+<%= f.fields_for :quantity, @list.list_items.build do |list_item| %>
+<%= f.label :quantity  %><br>
+<%= list_item.text_field :quanitity %>
+<% end %>
 <% end %>
 
 <label> Check out Prices at these stores:</label>
