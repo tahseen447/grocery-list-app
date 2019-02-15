@@ -6,9 +6,10 @@ class List < ActiveRecord::Base
 
   accepts_nested_attributes_for :list_items
 
-  def list_items_attributes=(list_item_attributes)
-    list_items_attributes.each do |list_item_attribute|
-
+  def list_items_attributes=(list_items_attributes)
+    list_items_attributes.values.each do |list_item_attribute|
+      @list_item = self.list_items.find(list_item_attribute[:id])
+      @list_item.update_column(:quantity, list_item_attribute[:quantity])
     end
   end
 

@@ -1,13 +1,15 @@
 <h1><%= @list.name %></h1>
 <h2><%= @list.description %> </h2>
-<% @list.items.each do |item| %>
-<li><%= link_to item.name, item_path %></li>
-<label>Quantity: </label>
-<%= f.form_for @list_item %>
-<%= f.fields_for :quantity, @list.list_items.build do |list_item| %>
-<%= f.label :quantity  %><br>
-<%= list_item.text_field :quanitity %>
+<%= form_for @list  do |f| %>
+<% @list.list_items.each do |item| %>
+  <li><%= link_to item.item.name, item_path(item.item) if item.item_id != nil%>
+    <%= f.label :quantity%>
+    <%= f.fields_for :list_items, item do |list_item|%>
+      <%= list_item.text_field :quantity, :value=>item.quantity %>
+      <% end %>
+    </li>
 <% end %>
+<%= f.submit %>
 <% end %>
 
 <label> Check out Prices at these stores:</label>
