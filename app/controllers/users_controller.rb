@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    return redirect_to :new unless @user.save
+    return render :new unless @user.save
     session[:user_id] = @user.id
     redirect_to controller: 'application', action: 'hello'
   end
