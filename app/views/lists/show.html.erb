@@ -1,5 +1,30 @@
 <h1><%= @list.name %></h1>
 <h2><%= @list.description %> </h2>
+
+<% if @list.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@list.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h2>
+
+    <ul>
+    <% @list.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% @list.list_items.each do |item| %>
+<% if item.errors[:quantity].any? %>
+<ul>
+  <% @list.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  <% end %>
+  <% end %>
+</ul>
+
 <%= form_for @list  do |f| %>
 <% @list.list_items.each do |item| %>
   <li><%= link_to item.item.name, item_path(item.item) if item.item_id != nil%>
@@ -11,6 +36,7 @@
 <% end %>
 <%= f.submit %>
 <% end %>
+
 
 <label> Check out Prices at these stores:</label>
 <%= form_tag(list_store_path(@list), method: "get") do %>

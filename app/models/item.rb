@@ -7,7 +7,8 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
-  #validates :name, uniqueness: true
+  validates :department, presence: true
+  validates_associated :store_items
 
   accepts_nested_attributes_for :store_items
 

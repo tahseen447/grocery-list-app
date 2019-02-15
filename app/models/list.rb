@@ -4,7 +4,12 @@ class List < ActiveRecord::Base
 
   belongs_to :user
 
+  validates :name, presence: true
+  validates :description, presence: true
+
+  validates_associated :list_items
   accepts_nested_attributes_for :list_items
+
 
   def list_items_attributes=(list_items_attributes)
     list_items_attributes.values.each do |list_item_attribute|

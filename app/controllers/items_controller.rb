@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
       if @item.save
         redirect_to store_item_path(@store, @item)
       else
-        render new_store_item_path(@store)
+        redirect_to new_store_item_path(@store)
       end
     else
     @item = Item.new(item_params)
