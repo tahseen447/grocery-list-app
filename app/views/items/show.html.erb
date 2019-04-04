@@ -1,5 +1,6 @@
 <h1><%= @item.name %></h1>
 <div>
+  <a href="#" class="js-next" data-id="<%=@item.id%>">Next...</a>
 <p><%= @item.description %> <br>
 </p>
 </div>
@@ -15,3 +16,12 @@
 
 <p> <%= link_to "Back to Items", items_path %> </p>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $(".js-next").on("click", function() {
+      event.preventDefault();
+      debugger
+    });
+  });
+</script>
