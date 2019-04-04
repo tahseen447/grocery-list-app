@@ -17,6 +17,10 @@ class ItemsController < ApplicationController
     if !params[:store_id].blank?
       @store = Store.find(params[:store_id])
     end
+      respond_to do |format|
+        format.html { render :show}
+        format.json { render json: @item }
+      end
   end
 
   def new

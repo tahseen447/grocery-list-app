@@ -1,7 +1,7 @@
-<h1><%= @item.name %></h1>
+<h1 class="itemName"><%= @item.name %></h1>
 <div>
   <a href="#" class="js-next" data-id="<%=@item.id%>">Next...</a>
-<p><%= @item.description %> <br>
+<p class="itemDescription"><%= @item.description %> <br>
 </p>
 </div>
 
@@ -21,7 +21,14 @@
   $(function () {
     $(".js-next").on("click", function() {
       event.preventDefault();
-      debugger
+      var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+      $.get("/items/" + nextId + ".json", function(data) {
+      var item = data;
+      $(".itemName").text(item["name"]);
+      $(".itemDescription").text(item["description"]);
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", item["id"]);
     });
   });
+});
 </script>
