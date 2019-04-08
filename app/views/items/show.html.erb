@@ -16,19 +16,3 @@
 
 <p> <%= link_to "Back to Items", items_path %> </p>
 </div>
-
-<script type="text/javascript" charset="utf-8">
-  $(function () {
-    $(".js-next").on("click", function() {
-      event.preventDefault();
-      var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-      $.get("/items/" + nextId + ".json", function(data) {
-      var item = data;
-      $(".itemName").text(item["name"]);
-      $(".itemDescription").text(item["description"]);
-      // re-set the id to current on the link
-      $(".js-next").attr("data-id", item["id"]);
-    });
-  });
-});
-</script>
