@@ -13,14 +13,14 @@ class ListsController < ApplicationController
   def create
     @list = current_user.lists.build(list_params)
     if @list.save
-      redirect_to list_path(@list)
+      render json: @list
     else
       render new_list_path
     end
   end
 
   def show
-    
+
   end
 
   def edit

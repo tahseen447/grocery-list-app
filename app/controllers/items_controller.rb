@@ -10,7 +10,10 @@ class ItemsController < ApplicationController
       @department = params[:sort_by_department]
     else
       @items = Item.all
-      render :json=>@items
+      respond_to do |fomat|
+        format.json { render :json=>@items}
+        format.html {render :index }
+      end
     end
   end
 
