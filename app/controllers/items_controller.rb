@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
       @department = params[:sort_by_department]
     else
       @items = Item.all
+      render :json=>@items
     end
   end
 
@@ -18,8 +19,8 @@ class ItemsController < ApplicationController
       @store = Store.find(params[:store_id])
     end
       respond_to do |format|
-        format.html { render :show}
-        format.json { render json: @item }
+      format.html { render :show}
+      format.json { render json: @item }
       end
   end
 
