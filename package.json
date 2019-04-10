@@ -1,5 +1,7 @@
 {
   "name": "grocery-list-app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "handlebars": "^4.1.1"
+  }
 }

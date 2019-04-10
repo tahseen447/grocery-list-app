@@ -12,7 +12,7 @@
   <body>
     <h1> Welcome to Grocery List App </h1>
     <% if logged_in? %>
-    <h3><%= link_to "Hello, #{current_user.name}!", user_path(current_user) %></h3>
+    <h3><a href="#" class="user_info" data-id="<%=current_user.id%>"><%= "Hello, #{current_user.name}!" %></h3>
     <h3><%= link_to "Lists", lists_path %></h3>
     <h3><%= link_to "Stores", stores_path %></h3>
     <h3><a class="items-index" href="#" >Items</a></h3>
@@ -21,11 +21,12 @@
     <h3><%= link_to "Sign In", login_path %></h3>
     <h3><%= link_to "Sign Up", new_user_path %></h3>
     <% end %>
-
     <div id="items">
 
     </div>
-
+    <div id="user_info">
+    </div>
+    <div id="lists"></div>
     <%= yield %>
 
   </body>

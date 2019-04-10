@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  layout false
+  layout 'application', :except => :show
+
   def index
     @list = List.all
   end
@@ -19,7 +22,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render :json => @user
+    render :json => @user, layout: false
   end
   private
   # Use callbacks to share common setup or constraints between actions.
