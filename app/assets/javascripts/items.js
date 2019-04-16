@@ -12,6 +12,32 @@ $(function () {
   });
 });
 
+$(function(){
+  $(".sort-items").on("click", function(e){
+    e.preventDefault();
+    $.get("/items.json", function(items){
+      items.sort(function(a, b) {
+        const  nameA = a.name.toUpperCase(); // ignore upper and lowercas
+        const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        // names must be equal
+        return 0;
+      });
+      $("#items").empty();
+      //document.getElementById("items").innerHTML = "";
+      items.forEach(item => {
+        let jsItem = new Item(item);
+        jsItem.formatItem();
+      });
+});
+});
+});
+
 $(function (){
   $(".items-index").on("click", function(event) {
     event.preventDefault();

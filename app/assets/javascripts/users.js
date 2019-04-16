@@ -3,7 +3,6 @@ $(function () {
     let user_id =$(".user_info").attr("data-id")
     $.get("/users/"+ user_id + ".json", function(data) {
       user_info = data;
-      debugger 
       $("#user_info").innerHTML = user_info["name"];
       user_info["lists"].forEach(function(list){
         let node = document.createElement("li");
